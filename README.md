@@ -8,6 +8,13 @@
 - edit docker-compose.override.yml
 - edit .env
 
+### .env.vars sample
+```
+GRAYLOG_IMAGE=graylog/graylog:6.1.6
+DATANODE_IMAGE=graylog/graylog-datanode:6.1.6
+GRAYLOG_HTTP_EXTERNAL_URI=http://localhost:9000/
+```
+
 ## run
 - docker compose pull
 - docker compose up -d

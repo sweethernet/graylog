@@ -1,0 +1,41 @@
+#version: "3.8"
+# local override
+# https://github.com/Graylog2/docker-compose
+
+services:
+  mongodb:
+    volumes:
+      - "mongodb_configdb:/data/configdb"
+    image: "${MONGO_IMAGE:-mongo:5.0}"
+    env_file:
+      - .env.secret
+      - .env.vars
+
+  datanode:
+    ulimits:
+      memlock:
+        hard: -1
+        soft: -1
+      nofile:
+        soft: 262144
+        hard: 262144
+    depends_on:
+      mongodb:
+        condition: "service_started"
+    env_file:
+      - .env.secret
+      - .env.vars
+
+  graylog:
+    environment:
+      GRAYLOG_HTTP_EXTERNAL_URI: "${GRAYLOG_HTTP_EXTERNAL_URI}"
+    volumes:
+      - "graylog_data:/usr/share/graylog/data"
+    ports:
+      - "19302:19302/tcp"   # squid
+    env_file:
+      - .env.secret
+      - .env.vars
+      
+volumes:
+  mongodb_configdb:

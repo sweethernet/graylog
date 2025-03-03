@@ -1,0 +1,6 @@
+[submodule "modules/docker-compose"]
+	path = modules/docker-compose
+	url = https://github.com/Graylog2/docker-compose.git
+[submodule "modules/GraySquid"]
+	path = modules/GraySquid
+	url = https://github.com/yon2004/GraySquid.git

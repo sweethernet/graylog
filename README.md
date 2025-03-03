@@ -1,3 +1,18 @@
+# graylog2 homelab
+## sources
+- graylog2 https://github.com/Graylog2/docker-compose.git
+- graysquid content pack https://github.com/yon2004/GraySquid.git
+
+## prepare
+- create secrets running prepare.sh
+- edit docker-compose.override.yml
+- edit .env
+
+## run
+- docker compose pull
+- docker compose up -d
+
+
 # graylog
 
 graylog 
